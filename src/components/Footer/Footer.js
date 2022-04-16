@@ -32,12 +32,7 @@ const Footer = () => {
               </Link>
             </ul>
           </div>
-          <div className={F.social}>
-            <button>
-              <img src={fbIcon} alt="" />
-            </button>
-            <button>a</button>
-          </div>
+          <div className={F.social}></div>
         </footer>
         <p style={{ color: "white", textAlign: "center" }}>
           Copyright &copy; {new Date().getFullYear()} Talking minds | Privacy

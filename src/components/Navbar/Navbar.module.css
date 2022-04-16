@@ -3,7 +3,12 @@
     align-items: center;
     padding:10px;
     border-bottom: 1px solid #26ABA3;
-    justify-content:space-around;
+    justify-content:space-between;
+}
+.menus{
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 .menus ul {
     display: flex;
@@ -45,4 +50,32 @@ color: #26ABA3;
     font-size: 18px;
     color: #fff;
     transition: 0.2s ease-in-out;
+}
+@media only screen and (max-width: 800px) {
+    .menus {
+       position: absolute;
+       background-color: #ddd;
+       padding:10px;
+       text-align:center;
+       left: 0%;
+       transition: 0.3s ease-in-out;
+    }
+    .logo{
+        width: 100%;
+        display: flex;
+        justify-content:space-between;
+    }
+}
+@media only screen and (min-width: 801px) {
+    .menus {
+     display:block !important;
+     width: 100%;
+     display:flex !important;
+    justify-content:flex-end;
+    }
+  
+    .icon{
+       display: none;
+    }
+    
 }

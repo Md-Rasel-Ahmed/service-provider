@@ -18,6 +18,7 @@
     color: #26ABA3;
 }
 .homeImg img {
+    margin-top: 10px;
     width:500px;
     border-top-left-radius: 100px;
     border-bottom-right-radius: 100px;
@@ -37,4 +38,11 @@
 .homeText button:hover{
     background:orange;
     color: #fff;
+}
+
+@media only screen and (max-width: 460px) {
+.homeImg img {
+   width: 300px;
+  
+}
 }
