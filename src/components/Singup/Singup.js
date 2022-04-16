@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import Sin from "./Singup.module.css";
-import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSendEmailVerification,
+} from "react-firebase-hooks/auth";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 
@@ -10,9 +13,21 @@ const Singup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [updateProfile, updating, updatEerror] = useUpdateProfile(auth);
-
+  const [sendEmailVerification, sending] = useSendEmailVerification(auth);
   const [passError, setPassError] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      toast.success("Singup successful");
+    }
+    if (error) {
+      toast.error(error.message.slice(22, -2));
+    }
+    if (user) {
+      navigate("/");
+    }
+  }, [user, error]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     let name = e.target.name.value;
@@ -22,14 +37,12 @@ const Singup = () => {
     if (pass === confirmPass) {
       await createUserWithEmailAndPassword(email, pass);
       await updateProfile({ displayName: name });
-      toast.success("Singup successful");
+      await sendEmailVerification();
     } else {
       setPassError("Confirm Password din,t match");
     }
-    if (user) {
-      navigate("/login");
-    }
   };
+
   return (
     <div className={Sin.singupWraper}>
       <h2>Singup Now</h2>
@@ -42,7 +55,7 @@ const Singup = () => {
           placeholder="Password"
           required
         />
-        <small className="text-danger">{passError}</small>
+        <small style={{ color: "red" }}>{passError}</small>
         <input
           required
           type="password"

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
@@ -16,14 +16,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  if (loading) {
-    return <p>Loading....</p>;
-  }
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    let email = e.target.email.value;
-    let pass = e.target.password.value;
-    await signInWithEmailAndPassword(email, pass);
+  useEffect(() => {
     let from = location.state?.from?.pathname || "/";
     if (user) {
       navigate(from, { replace: true });
@@ -32,13 +25,25 @@ const Login = () => {
     if (error) {
       toast.error(error.message.slice(22, -2));
     }
+  }, [user, error]);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let email = e.target.email.value;
+    let pass = e.target.password.value;
+    await signInWithEmailAndPassword(email, pass);
   };
+
   // Reaset pass
   const resetPass = async (e) => {
     await sendPasswordResetEmail(email);
     sending && toast.success("Sent email");
     ResetError && toast.error(ResetError.message.slice(22, -2));
   };
+
   return (
     <div className={Log.loginWraper}>
       <h2>Login Now</h2>

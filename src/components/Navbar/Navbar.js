@@ -41,6 +41,9 @@ const Navbar = () => {
             <Link className={N.link} to="/about">
               About
             </Link>
+            <Link className={N.link} to="/blog">
+              Blog
+            </Link>
           </ul>
         </div>
         <div className={N.users}>
