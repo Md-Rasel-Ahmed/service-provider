@@ -2,7 +2,12 @@ import React from "react";
 import S from "./Services.module.css";
 import servic1 from "../../img/Services/service_5.svg";
 import servic2 from "../../img/Services/Group.svg";
+import { useNavigate } from "react-router-dom";
 const Service = () => {
+  const navigate = useNavigate();
+  const buyBtn = () => {
+    navigate("/checkout");
+  };
   return (
     <div className={S.wraper}>
       <h1>What I offer</h1>
@@ -26,7 +31,7 @@ const Service = () => {
             </p>
           </div>
           <div style={{ textAlign: "center" }}>
-            <button>Buy</button>
+            <button onClick={buyBtn}>Buy</button>
           </div>
         </div>
         <div className={S.card}>
@@ -48,7 +53,7 @@ const Service = () => {
             </p>
           </div>
           <div style={{ textAlign: "center" }}>
-            <button>Buy</button>
+            <button onClick={buyBtn}>Buy</button>
           </div>
         </div>
         <div className={S.card}>
@@ -69,7 +74,7 @@ const Service = () => {
             </p>
           </div>
           <div style={{ textAlign: "center" }}>
-            <button>Buy</button>
+            <button onClick={buyBtn}>Buy</button>
           </div>
         </div>
       </div>

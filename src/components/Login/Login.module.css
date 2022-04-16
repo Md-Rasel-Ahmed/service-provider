@@ -1,0 +1,35 @@
+.loginWraper {
+    padding: 30px 10px;
+    width: 350px;
+    margin: auto;
+}
+
+
+
+.loginWraper input {
+    display: block;
+    width: 93%;
+    margin: 10px 0px;
+    outline: none;
+    border: none;
+    background-color: #ddd;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.loginWraper button {
+    display: block;
+    background-color: #26ABA3;
+    font-size: 20px;
+    color: #fff;
+    padding: 8px;
+    width: 100%;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border:none;
+    cursor: pointer;
+}
+
+.loginWraper link {
+    text-decoration: none;
+}

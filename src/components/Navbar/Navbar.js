@@ -1,8 +1,15 @@
 import React from "react";
 import N from "./Navbar.module.css";
 import logo from "../../img/Logo2.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const navigate = useNavigate();
+  const singinBtn = () => {
+    navigate("/login");
+  };
+  const singupBtn = () => {
+    navigate("/singup");
+  };
   return (
     <div>
       <nav className={N.nav}>
@@ -22,8 +29,8 @@ const Navbar = () => {
           </ul>
         </div>
         <div className={N.users}>
-          <button>Singin</button>
-          <button>Singup</button>
+          <button onClick={singinBtn}>Singin</button>
+          <button onClick={singupBtn}>Singup</button>
         </div>
       </nav>
     </div>
