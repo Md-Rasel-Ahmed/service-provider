@@ -2,13 +2,28 @@ import React from "react";
 import N from "./Navbar.module.css";
 import logo from "../../img/Logo2.svg";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import { toast } from "react-toastify";
+import { signOut } from "firebase/auth";
 const Navbar = () => {
+  const [user, loading, error] = useAuthState(auth);
+
   const navigate = useNavigate();
   const singinBtn = () => {
     navigate("/login");
   };
   const singupBtn = () => {
     navigate("/singup");
+  };
+  const singoutBtn = () => {
+    signOut(auth)
+      .then(() => {
+        toast.success("Singout successful");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
   };
   return (
     <div>
@@ -29,8 +44,15 @@ const Navbar = () => {
           </ul>
         </div>
         <div className={N.users}>
-          <button onClick={singinBtn}>Singin</button>
-          <button onClick={singupBtn}>Singup</button>
+          {user?.email ? (
+            <button onClick={singoutBtn}>Logout</button>
+          ) : (
+            <>
+              {" "}
+              <button onClick={singinBtn}>Singin</button>
+              <button onClick={singupBtn}>Singup</button>
+            </>
+          )}
         </div>
       </nav>
     </div>

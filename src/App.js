@@ -14,26 +14,27 @@ import RequirAuth from "./components/RequirAuth/RequirAuth";
 
 function App() {
   return (
-    <div>
-      <Navbar></Navbar>
-
-      <Routes>
-        <Route path="/" element={<Allpages></Allpages>}></Route>
-        <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="/singup" element={<Singup></Singup>}></Route>
-        <Route path="/checkout" element={<Checkout></Checkout>}></Route>
-        <Route
-          path="/thankyou"
-          element={
-            <RequirAuth>
-              <Thakyou></Thakyou>
-            </RequirAuth>
-          }
-        ></Route>
-      </Routes>
-      <Footer></Footer>
-      <ToastContainer></ToastContainer>
-    </div>
+    <>
+      <div>
+        <Navbar></Navbar>
+        <Routes>
+          <Route path="/" element={<Allpages></Allpages>}></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/singup" element={<Singup></Singup>}></Route>
+          <Route path="/checkout" element={<Checkout></Checkout>}></Route>
+          <Route
+            path="/thankyou"
+            element={
+              <RequirAuth>
+                <Thakyou></Thakyou>
+              </RequirAuth>
+            }
+          ></Route>
+        </Routes>
+        <Footer></Footer>
+      </div>
+      <ToastContainer />
+    </>
   );
 }
 
