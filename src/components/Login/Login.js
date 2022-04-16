@@ -25,7 +25,10 @@ const Login = () => {
     if (error) {
       toast.error(error.message.slice(22, -2));
     }
-  }, [user, error]);
+    if (ResetError) {
+      toast.error(ResetError.message.slice(22, -3));
+    }
+  }, [user, error, ResetError]);
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -39,9 +42,13 @@ const Login = () => {
 
   // Reaset pass
   const resetPass = async (e) => {
-    await sendPasswordResetEmail(email);
-    sending && toast.success("Sent email");
-    ResetError && toast.error(ResetError.message.slice(22, -2));
+    if (email) {
+      await sendPasswordResetEmail(email);
+    }
+    if (!sending) {
+      toast.success("Email Sent");
+      return;
+    }
   };
 
   return (

@@ -57,3 +57,8 @@
     color: #fff;
     transition: 0.2s ease-in-out;
 }
+@media only screen and (max-width: 800px) {
+   .footer .menus{
+       display: none;
+   }
+}
