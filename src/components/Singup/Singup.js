@@ -30,10 +30,10 @@ const Singup = () => {
     if (error) {
       toast.error(error.message.slice(22, -2));
     }
-    if (user) {
+    if (user || guser) {
       navigate("/");
     }
-  }, [user, error]);
+  }, [user, error, guser]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     let name = e.target.name.value;
@@ -49,8 +49,9 @@ const Singup = () => {
     }
   };
   // goole login
-  const googleLogin = () => {
-    signInWithGoogle();
+  const googleLogin = async () => {
+    await signInWithGoogle();
+    await sendEmailVerification();
   };
 
   return (
