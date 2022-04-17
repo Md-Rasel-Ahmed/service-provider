@@ -1,3 +1,5 @@
+import { faG } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import {
   useSendPasswordResetEmail,
@@ -16,8 +18,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   useEffect(() => {
-    let from = location.state?.from?.pathname || "/";
     if (user) {
       navigate(from, { replace: true });
       toast.success("Login successful");
@@ -25,7 +27,8 @@ const Login = () => {
     if (error) {
       toast.error(error.message.slice(22, -2));
     }
-  }, [user, error]);
+    gUser && navigate(from, { replace: true });
+  }, [user, error, gUser]);
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -62,7 +65,20 @@ const Login = () => {
         />
         <button>Login</button>
       </form>
-      <button onClick={() => signInWithGoogle()}>Login with google</button>
+      <button
+        style={{
+          background: "#4285F4",
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+        }}
+        onClick={async () => {
+          await signInWithGoogle();
+        }}
+      >
+        <FontAwesomeIcon icon={faG} />
+        Login with google
+      </button>
       <a onClick={resetPass} href="#">
         Reset your password?
       </a>

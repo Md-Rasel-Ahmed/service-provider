@@ -9,6 +9,8 @@ import {
 } from "react-firebase-hooks/auth";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faG } from "@fortawesome/free-solid-svg-icons";
 
 const Singup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -72,7 +74,18 @@ const Singup = () => {
         />
         <button>Singup</button>
       </form>
-      <button onClick={googleLogin}>Singup with google</button>
+      <button
+        style={{
+          background: "#4285F4",
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+        }}
+        onClick={googleLogin}
+      >
+        <FontAwesomeIcon icon={faG} />
+        Singup with google
+      </button>
       <Link to="/login">Already have an account?</Link>
     </div>
   );
