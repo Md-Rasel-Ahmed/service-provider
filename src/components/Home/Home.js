@@ -6,8 +6,8 @@ const Home = () => {
     <div className={H.container}>
       <div className={H.homeText}>
         <h1>
-          <span>D.Alia</span>Private mental health consultation from a
-          professional
+          <span>Dr. Merry Stone </span>— Licensed Mental Health Counselor,
+          Psychotherapist
         </h1>
         <p>
           For over 15 years, Talkingminds have been a respected provider of

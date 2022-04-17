@@ -2,6 +2,7 @@ import React from "react";
 import S from "./Services.module.css";
 import servic1 from "../../img/Services/service_5.svg";
 import servic2 from "../../img/Services/Group.svg";
+import servic3 from "../../img/Services/Group-Copy.svg";
 import { useNavigate } from "react-router-dom";
 const Service = () => {
   const navigate = useNavigate();
@@ -61,16 +62,17 @@ const Service = () => {
             <strong>$300</strong>
           </div>
           <div className={S.cardImg}>
-            <img src={servic1} alt="" />
+            <img src={servic3} alt="" />
           </div>
           <div className={S.cardText}>
-            <h2>Depression Therapy</h2>
+            <h2>Trauma Informed Therapy</h2>
           </div>
           <div className={S.cardBody}>
             <p>
-              Depression Treatment in Sydney One of the most common mental
-              health issues in Australia; depression can be debilitating, if
-              untreated and can greatly impair the everyday life of sufferers.
+              For many years, clients have sought therapy and treatment at
+              Talkingminds in inner west Sydney and Camden NSW to work through
+              and process the impacts of trauma (which can include post
+              -traumatic stress disorder (PTSD),
             </p>
           </div>
           <div style={{ textAlign: "center" }}>
