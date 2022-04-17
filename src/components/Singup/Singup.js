@@ -5,6 +5,7 @@ import Sin from "./Singup.module.css";
 import {
   useCreateUserWithEmailAndPassword,
   useSendEmailVerification,
+  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
@@ -12,8 +13,11 @@ import { toast } from "react-toastify";
 const Singup = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
+  const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+
   const [updateProfile, updating, updatEerror] = useUpdateProfile(auth);
   const [sendEmailVerification, sending] = useSendEmailVerification(auth);
+
   const [passError, setPassError] = useState("");
   const navigate = useNavigate();
 
@@ -42,6 +46,10 @@ const Singup = () => {
       setPassError("Confirm Password din,t match");
     }
   };
+  // goole login
+  const googleLogin = () => {
+    signInWithGoogle();
+  };
 
   return (
     <div className={Sin.singupWraper}>
@@ -63,8 +71,9 @@ const Singup = () => {
           placeholder="Confirm Password"
         />
         <button>Singup</button>
-        <Link to="/login">Already have an account?</Link>
       </form>
+      <button onClick={googleLogin}>Singup with google</button>
+      <Link to="/login">Already have an account?</Link>
     </div>
   );
 };

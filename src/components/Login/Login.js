@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -11,8 +12,7 @@ import Log from "./Login.module.css";
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-  const [sendPasswordResetEmail, sending, ResetError] =
-    useSendPasswordResetEmail(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -25,10 +25,7 @@ const Login = () => {
     if (error) {
       toast.error(error.message.slice(22, -2));
     }
-    if (ResetError) {
-      toast.error(ResetError.message.slice(22, -3));
-    }
-  }, [user, error, ResetError]);
+  }, [user, error]);
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -42,13 +39,7 @@ const Login = () => {
 
   // Reaset pass
   const resetPass = async (e) => {
-    if (email) {
-      await sendPasswordResetEmail(email);
-    }
-    if (!sending) {
-      toast.success("Email Sent");
-      return;
-    }
+    navigate("/reset");
   };
 
   return (
@@ -71,6 +62,7 @@ const Login = () => {
         />
         <button>Login</button>
       </form>
+      <button onClick={() => signInWithGoogle()}>Login with google</button>
       <a onClick={resetPass} href="#">
         Reset your password?
       </a>
