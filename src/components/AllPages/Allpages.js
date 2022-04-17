@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "../Home/Home";
+import OnlineForm from "../OnlineForm/OnlineForm";
 import Service from "../Service/Service";
 
 const Allpages = () => {
@@ -7,6 +8,7 @@ const Allpages = () => {
     <div>
       <Home></Home>
       <Service></Service>
+      <OnlineForm></OnlineForm>
     </div>
   );
 };

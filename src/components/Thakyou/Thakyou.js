@@ -5,7 +5,7 @@ import React from "react";
 const Thakyou = () => {
   return (
     <>
-      <div align="center" style={{ color: "green", padding: "50px 0px" }}>
+      <div align="center" style={{ color: "green", padding: "80px 0px" }}>
         <FontAwesomeIcon
           style={{ fontSize: "30px" }}
           icon={faCheckCircle}
