@@ -14,6 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import About from "./components/About/About";
 import ResetPass from "./components/ResetPass";
+import Notfound from "./components/Notfound/Notfound";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/about" element={<About></About>}></Route>
           <Route path="/blog" element={<Blog></Blog>}></Route>
           <Route path="/reset" element={<ResetPass></ResetPass>}></Route>
+          <Route path="*" element={<Notfound></Notfound>}></Route>
         </Routes>
 
         <Footer></Footer>
