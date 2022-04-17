@@ -13,7 +13,7 @@ const ResetPass = () => {
     toast.success("Email Sent");
   };
   return (
-    <div style={{ padding: "50px 0px", width: "300px", margin: "auto" }}>
+    <div style={{ padding: "70px 0px", width: "300px", margin: "auto" }}>
       <h3>Reset your pass</h3>
       <form onSubmit={handleSubmit}>
         <input

@@ -10,7 +10,7 @@ const Notfound = () => {
         textAlign: "center",
       }}
     >
-      <h1>Page not founded</h1>
+      <h1>Opps! Page not founded</h1>
       <h1>404</h1>
     </div>
   );

@@ -8,6 +8,10 @@ const Checkout = () => {
   const placeOrderBtn = () => {
     navigate("/thankyou");
   };
+  // handle submit button
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <>
       {" "}
@@ -24,7 +28,7 @@ const Checkout = () => {
         <div className={check.checkoutForm}>
           <div className={check.checkoutWraper}>
             <p>Contact information</p>
-            <form action="">
+            <form onSubmit={handleSubmit}>
               <input type="text" name="email" placeholder="Email" />
               <div>
                 <p>Shiping Adress</p>

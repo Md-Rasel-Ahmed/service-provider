@@ -7,6 +7,7 @@ import auth from "../../firebase.init";
 import { toast } from "react-toastify";
 import { signOut } from "firebase/auth";
 import { MenuIcon, XIcon } from "@heroicons/react/solid";
+import CustomLink from "../CustomLink/CustomLink";
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -50,15 +51,15 @@ const Navbar = () => {
 
         <div className={N.menus} style={open ? openmenu : closemenu}>
           <ul>
-            <Link className={N.link} to="/">
+            <CustomLink className={N.link} to="/">
               Home
-            </Link>
-            <Link className={N.link} to="/about">
+            </CustomLink>
+            <CustomLink className={N.link} to="/about">
               About
-            </Link>
-            <Link className={N.link} to="/blog">
+            </CustomLink>
+            <CustomLink className={N.link} to="/blog">
               Blog
-            </Link>
+            </CustomLink>
           </ul>
           <div className={N.users}>
             {user?.email ? (
