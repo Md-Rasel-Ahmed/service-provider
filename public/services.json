@@ -1,0 +1,20 @@
+[
+    {    "id":1,
+        "name":"Depression Therapy",
+        "description":"Depression Treatment in Sydney One of the most common mental health issues in Australia; depression can be debilitating, if untreated and can greatly impair the everyday life of sufferers.",
+        "image":"https://rayoflightthemes.com/wordpress-themes/talking-minds-wordpress-theme/wp-content/uploads/2022/01/service_5.svg",
+        "price":200
+    },
+    {    "id":2,
+        "name":"Couples Counseling",
+        "description":"Therapy On Your Schedule. Text, Phone & Online Therapy With a Licensed Therapist. Meet With a Licensed Therapist Via Phone, Chat or Video. Specialized In Couples Issues. Licensed Counselor. Start Therapy. Flexible Text Options. Mental Health Support.",
+        "image":"https://rayoflightthemes.com/wordpress-themes/talking-minds-wordpress-theme/wp-content/uploads/2022/01/Group.svg",
+        "price":250
+    },
+    {    "id":3,
+        "name":"Trauma Informed Therapy",
+        "description":"For many years, clients have sought therapy and treatment at Talkingminds in inner west Sydney and Camden NSW to work through and process the impacts of trauma (which can include post -traumatic stress disorder (PTSD),",
+        "image":"https://rayoflightthemes.com/wordpress-themes/talking-minds-wordpress-theme/wp-content/uploads/2022/01/Group-Copy.svg",
+        "price":300
+    }
+]

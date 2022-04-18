@@ -3,11 +3,11 @@ import Home from "../Home/Home";
 import OnlineForm from "../OnlineForm/OnlineForm";
 import Service from "../Service/Service";
 
-const Allpages = () => {
+const Allpages = ({ buyBtn }) => {
   return (
     <div>
       <Home></Home>
-      <Service></Service>
+      <Service buyBtn={buyBtn}></Service>
       <OnlineForm></OnlineForm>
     </div>
   );

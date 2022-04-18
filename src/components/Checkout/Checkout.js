@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import check from "./Checkout.module.css";
-const Checkout = () => {
+const Checkout = ({ clickService }) => {
+  console.log(clickService);
   const navigate = useNavigate();
   const placeOrderBtn = () => {
     navigate("/thankyou");
@@ -70,14 +71,10 @@ const Checkout = () => {
           </div>
         </div>
         <div className={check.checkoutItems}>
-          <h4>Items Name : Depression Therapy</h4>
-          <strong>Doctor Name : Doctor Alia</strong>
-          <p>
-            Depression Treatment in Sydney One of the most common mental health
-            issues in Australia; depression can be debilitating, if untreated
-            and can greatly impair the everyday life of sufferers.
-          </p>
-          <h4>Price : $200</h4>
+          <h4>Items Name : {clickService.name}</h4>
+          <strong>Doctor Name : Dr. Merry Stone</strong>
+          <p>{clickService.description}</p>
+          <h4>Price : ${clickService.price}</h4>
           <button onClick={placeOrderBtn}>Place Order</button>
         </div>
       </div>

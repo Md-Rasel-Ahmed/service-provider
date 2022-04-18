@@ -1,20 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import S from "./Services.module.css";
 import servic1 from "../../img/Services/service_5.svg";
 import servic2 from "../../img/Services/Group.svg";
 import servic3 from "../../img/Services/Group-Copy.svg";
 import { useNavigate } from "react-router-dom";
-const Service = () => {
+const Service = ({ buyBtn }) => {
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    fetch("services.json")
+      .then((res) => res.json())
+      .then((data) => setServices(data));
+  }, []);
   const navigate = useNavigate();
-  const buyBtn = () => {
-    navigate("/checkout");
-  };
+
   return (
     <div className={S.wraper}>
       <h1>What I offer</h1>
 
       <div className={S.container}>
-        <div className={S.card}>
+        {services?.map((service) => {
+          return (
+            <div key={service.id} className={S.card}>
+              <div className={S.cardPrice}>
+                <strong>${service.price}</strong>
+              </div>
+              <div className={S.cardImg}>
+                <img src={service.image} alt="" />
+              </div>
+              <div className={S.cardText}>
+                <h2>{service.name}</h2>
+              </div>
+              <div className={S.cardBody}>
+                <p>{service.description}</p>
+              </div>
+              <div style={{ textAlign: "center" }}>
+                <button onClick={() => buyBtn(service.id)}>Buy</button>
+              </div>
+            </div>
+          );
+        })}
+
+        {/* <div className={S.card}>
           <div className={S.cardPrice}>
             <strong>$200</strong>
           </div>
@@ -34,7 +60,9 @@ const Service = () => {
           <div style={{ textAlign: "center" }}>
             <button onClick={buyBtn}>Buy</button>
           </div>
-        </div>
+        </div> */}
+
+        {/* 
         <div className={S.card}>
           <div className={S.cardPrice}>
             <strong>$250</strong>
@@ -57,6 +85,7 @@ const Service = () => {
             <button onClick={buyBtn}>Buy</button>
           </div>
         </div>
+
         <div className={S.card}>
           <div className={S.cardPrice}>
             <strong>$300</strong>
@@ -78,7 +107,7 @@ const Service = () => {
           <div style={{ textAlign: "center" }}>
             <button onClick={buyBtn}>Buy</button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
