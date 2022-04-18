@@ -4,14 +4,12 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import check from "./Checkout.module.css";
 const Checkout = ({ clickService }) => {
-  console.log(clickService);
   const navigate = useNavigate();
-  const placeOrderBtn = () => {
-    navigate("/thankyou");
-  };
+
   // handle submit button
   const handleSubmit = (e) => {
     e.preventDefault();
+    navigate("/thankyou");
   };
   return (
     <>
@@ -34,8 +32,8 @@ const Checkout = ({ clickService }) => {
               <div>
                 <p>Shiping Adress</p>
                 <div style={{ display: "flex", gap: "5px" }}>
-                  <input type="text" placeholder="First Name" />
-                  <input type="text" placeholder="Last Name" />
+                  <input type="text" placeholder="First Name" required />
+                  <input type="text" placeholder="Last Name" required />
                 </div>
                 <input type="text" placeholder="Company (optional)" />
                 <input
@@ -47,14 +45,20 @@ const Checkout = ({ clickService }) => {
                   type="text"
                   name="name"
                   placeholder="Flat,suit or floor"
+                  required
                 />
-                <input type="text" name="name" placeholder="Business name" />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Business name(optional)"
+                />
                 <div style={{ display: "flex", gap: "5px" }}>
-                  <input type="text" name="city" placeholder="City" />
+                  <input type="text" name="city" placeholder="City" required />
                   <input
                     type="number"
                     name="postalCode"
                     placeholder="Postal Code"
+                    required
                   />
                 </div>
               </div>
@@ -65,7 +69,7 @@ const Checkout = ({ clickService }) => {
                   <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
                   Return to home page
                 </Link>
-                <button>Save&Continue</button>
+                <button>Save & Place Order</button>
               </div>
             </form>
           </div>
@@ -75,7 +79,6 @@ const Checkout = ({ clickService }) => {
           <strong>Doctor Name : Dr. Merry Stone</strong>
           <p>{clickService.description}</p>
           <h4>Price : ${clickService.price}</h4>
-          <button onClick={placeOrderBtn}>Place Order</button>
         </div>
       </div>
     </>
