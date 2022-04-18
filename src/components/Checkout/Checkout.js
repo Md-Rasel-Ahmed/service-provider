@@ -2,8 +2,12 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 import check from "./Checkout.module.css";
 const Checkout = ({ clickService }) => {
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
   // handle submit button
@@ -28,7 +32,12 @@ const Checkout = ({ clickService }) => {
           <div className={check.checkoutWraper}>
             <p>Contact information</p>
             <form onSubmit={handleSubmit}>
-              <input type="text" name="email" placeholder="Email" />
+              <input
+                type="text"
+                name="email"
+                placeholder={user?.email}
+                readOnly
+              />
               <div>
                 <p>Shiping Adress</p>
                 <div style={{ display: "flex", gap: "5px" }}>
